@@ -18,7 +18,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    if: github.repository == 'mapestliu/FriendlyWRT-ROM'
+    if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
 
