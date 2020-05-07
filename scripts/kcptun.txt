@@ -1,0 +1,1 @@
+--crypt none --mode fast --sndwnd 512 --rcvwnd 1024 --dscp 1 --nocomp true
