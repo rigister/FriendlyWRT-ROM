@@ -78,6 +78,15 @@ jobs:
           sed -i '/8.8.8.8/d' package/base-files/files/root/setup.sh
           mv ../../scripts/check_wan.sh package/base-files/files/usr/bin && sed -i '/exit/i\/bin/sh /usr/bin/check_wan.sh &' package/base-files/files/etc/rc.local
           mv ../../scripts/updateROM.sh package/base-files/files/root/updateROM.sh
+          
+      - name: Add OpenClash
+        run: |
+          git clone https://github.com/vernesong/OpenClash.git 
+          mv OpenClash/luci-app-openclash friendlywrt-rk3328/friendlywrt/package
+          cd friendlywrt-rk3328/friendlywrt/package/base-files/files
+          mkdir -p etc/openclash/core && cd etc/openclash/core
+          curl -L https://github.com/vernesong/OpenClash/releases/download/Clash/clash-linux-armv8.tar.gz | tar zxf -
+          chmod +x clash    
 
       - name: Build FriendlyWRT
         run: |
@@ -98,16 +107,21 @@ jobs:
           sudo umount /mnt/friendlywrt-tmp
           sudo losetup -d $lodev
       
-      - name: Assemble Artifact
+      - name: Assemble ArtifactROM
         run: |
-          mkdir artifact
+          mkdir artifactROM
           gzip friendlywrt-rk3328/out/*.img
-          cp friendlywrt-rk3328/out/*.img.gz artifact
-          cp friendlywrt-rk3328/configs/config_rk3328 artifact
+          cp friendlywrt-rk3328/out/*.img.gz artifactROM
+          cp friendlywrt-rk3328/configs/config_rk3328 artifactROM
           
-      - name: Upload Artifact
+      - name: Upload ArtifactROM
         uses: actions/upload-artifact@master
         with:
           name: FriendlyWRT-R2S-leanROM
-          path: artifact
+          path: artifactROM
           
+      - name: Upload ArtifactPackages
+        uses: actions/upload-artifact@master
+        with:
+          name: FriendlyWRT-R2S-leanPackages
+          path: friendlywrt-rk3328/friendlywrt/bin/packages/aarch64_cortex-a53
