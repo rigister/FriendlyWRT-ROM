@@ -51,9 +51,9 @@ CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Kcptun=y
 # CONFIG_PACKAGE_dns2socks is not set
 # CONFIG_PACKAGE_simple-obfs is not set
 
-# CONFIG_PACKAGE_block-mount not set
 CONFIG_PACKAGE_luci-app-upnp=y
 CONFIG_PACKAGE_luci-app-filetransfer=y
+# CONFIG_PACKAGE_block-mount not set
 # CONFIG_PACKAGE_luci-app-ddns not set
 # CONFIG_PACKAGE_ddns-scripts not set
 # CONFIG_PACKAGE_ddns-scripts_aliyun not set
@@ -76,7 +76,7 @@ CONFIG_PACKAGE_luci-app-filetransfer=y
 # CONFIG_PACKAGE_luci-app-samba4 not set
 # CONFIG_PACKAGE_luci-app-mwan3 not set
 # CONFIG_PACKAGE_luci-app-syncdial not set
-CONFIG_PACKAGE_luci-app-nps=m
+# CONFIG_PACKAGE_luci-app-nps not set
 # CONFIG_PACKAGE_npc not set
 
 # CONFIG_TARGET_ROOTFS_TARGZ is not set
