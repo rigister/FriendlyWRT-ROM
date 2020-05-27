@@ -1,13 +1,13 @@
 name: R2S Lean FriendlyWRT
 
 on:
- # push:
- #   branches:
- #     - master
- #   paths:
- #     - 'build-number'
- #   tags-ignore:
- #     - build*
+  push:
+    branches:
+      - master
+    paths:
+      - 'build-number'
+    tags-ignore:
+     - build*
   schedule:
     - cron: '00 10 * * *'
   watch:
